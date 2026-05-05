@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Publicacion {
+class Publicacion {
     private static int consecutivo = 1;
     private int codigo;
     private String titulo;
@@ -58,6 +58,14 @@ public class Publicacion {
 
     public void agregarComentario(String email, String ip, String texto) {
         comentarios.add(new Comentario(email, ip, texto));
+    }
+    //agregado
+    public List<String> obtenerComentarios() {
+        List<String> resultado = new ArrayList<>();
+        for (Comentario c : comentarios) {
+            resultado.add(c.toString());
+        }
+        return resultado;
     }
 
     public void borrarComentario(int pos) throws Exception {

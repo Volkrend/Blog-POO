@@ -1,6 +1,7 @@
 package logica;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -53,6 +54,7 @@ public class Blog {
 		Publicacion p = new Publicacion(titulo, texto, nombre);
 		publicaciones.put(p.getCodigo(), p); 
 	}
+	
 	public String obtenerRepresentacionP(int codigoP) throws Exception {
 		esCodigoValido(codigoP);
 		Publicacion p = publicaciones.get(codigoP);
@@ -70,6 +72,12 @@ public class Blog {
 		esCodigoValido(codigoP);
 		Publicacion p = publicaciones.get(codigoP);
 		p.agregarComentario(email,  ip,  texto);
+	}
+	//agregado
+	public List<String> obtenerComentarios(int codigoPublicacion) throws Exception {
+	    esCodigoValido(codigoPublicacion);
+	    Publicacion p = publicaciones.get(codigoPublicacion);
+	    return p.obtenerComentarios();
 	}
 	
 	public void borrarComentario(int codigoP,int  posicion) throws Exception {
